@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>HomePage </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<div th:insert="Blocks/header :: header"></div>
+
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Your Clothing Store</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Welcome <3</p>
+        </div>
+    </div>
+</header>
+
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                        <div th:each="clothing : ${clothing}" class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img th:src="${clothing.Img}" class="card-img-top" alt="...">
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-left">
+                                    <!-- Product name-->
+                                    <h5 th:text="${clothing.ClothingName}" class="fw-bolder"/>
+                                    <!-- Product price-->
+                                    <h4 th:text="${clothing.ClothingPrice}+ ' p.'"/>
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text">
+                                    <a class="btn btn-outline-dark mt-auto, me-1" th:href="'/product/'+${clothing.ClothingID}">Подробнее</a>
+                                    <a class="btn btn-outline-dark mt-auto"th:href="@{'add/'+ ${clothing.ClothingID}}">В корзину</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<footer class="py-5 bg-dark">
+    <div class="container"><p class="m-0 text-center text-white">Copyright © Your Clothing Store 2022</p></div>
+</footer>
+</body>
+</html>

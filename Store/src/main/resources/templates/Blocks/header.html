@@ -1,0 +1,35 @@
+<div th:fragment="header">
+  <header class="p-3 text-bg-light">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-left mb-md-0">
+          <li><a href="/" class="nav-link px-2 text-dark me-1">Магазин</a></li>
+
+          <!--ВЕРНУТЬ ПОЗЖЕ-->
+
+        <!--  <li><a href="#" class="nav-link px-2 text-dark me-1">Правила ухода</a></li>
+          <li><a href="#" class="nav-link px-2 text-dark me-1">Контакты</a></li>
+          <li><a href="#" class="nav-link px-2 text-dark me-1">Доставка</a></li>-->
+
+
+
+
+          <li><a href="/orders" class="nav-link px-2 text-dark me-1">Отслеживание заказа</a></li>
+        </ul>
+          <div>
+
+              <a href="/basket" class="btn btn-outline-dark me-3">Корзина
+                <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+              </a>
+
+          </div>
+        <div class="text-end">
+          <a href="/authorization" class="btn btn-dark me-2">Авторизация </a>
+          <a href="/registration" class="btn btn-warning me-2">Регистрация </a>
+        </div>
+      </div>
+
+    </div>
+  </header>
+</div>
