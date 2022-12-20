@@ -3,7 +3,6 @@ package com.CW.Store.Controllers;
 
 import com.CW.Store.Entity.Clothing;
 import com.CW.Store.repo.ClothingRepository;
-import com.CW.Store.util.ShoppingBasket;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,16 +39,11 @@ public class MainController {
         return "productDetails";
     }
 
-    private ShoppingBasket basket;
-
     @PostMapping("/add/{ClothingID}")
     public String addToBasket(@PathVariable(value = "ClothingID") long ClothingID, Model model){
         if(!clothingRepository.existsById(ClothingID)){
             return "redirect:/ ";
         }
-
-
-
 
         return "redirect:/";
     }

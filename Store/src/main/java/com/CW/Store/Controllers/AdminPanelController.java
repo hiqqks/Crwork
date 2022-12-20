@@ -5,10 +5,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class RegistrationController {
-    @GetMapping ("/registration")
-    public String RegistrationMain(Model model){
-        return "registration";
-    }
+public class AdminPanelController {
 
+    @GetMapping("/admin-panel")
+    public String ShowShowAdminPanel(Model model){
+        return "admin-panel";
+    }
 }
