@@ -5,10 +5,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class OrdersAdministrationController {
-    @GetMapping("/admin-panel/orders")
-    public String ShowShowAdminPanel(Model model){
-        return "admin-panel-orders";
-    }
+public class ProductsAdministrationController {
 
+    @GetMapping("/admin-panel/products")
+    public String ShowShowAdminPanel(Model model){
+        return "admin-panel-products";
+    }
 }

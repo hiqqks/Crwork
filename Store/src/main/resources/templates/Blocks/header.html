@@ -12,7 +12,7 @@
           <li><a href="#" class="nav-link px-2 text-dark me-1">Контакты</a></li>
           <li><a href="#" class="nav-link px-2 text-dark me-1">Доставка</a></li>-->
           <li><a href="/orders" class="nav-link px-2 text-dark me-1">Отслеживание заказа</a></li>
-          <li><a  sec:authorize="isAuthenticated()" href="/admin-panel" class="nav-link px-2 text-dark me-1">Панель администратора</a></li>
+          <li><a  sec:authorize="isAuthenticated() and hasAuthority('ADMIN')" href="/admin-panel/users" class="nav-link px-2 text-dark me-1">Панель администратора</a></li>
         </ul>
           <div>
               <a sec:authorize="isAuthenticated()"  href="/basket" class="btn btn-outline-dark me-3">Корзина
@@ -20,7 +20,7 @@
               </a>
           </div>
         <div class="text-end">
-          <a sec:authorize="!isAuthenticated()"  href="/register" class="btn btn-warning me-2">Регистрация </a>
+          <a sec:authorize="!isAuthenticated() "  href="/register" class="btn btn-warning me-2">Регистрация </a>
           <a sec:authorize="!isAuthenticated()" href="/login" class="btn btn-dark me-2">Войти </a>
           <a sec:authorize="isAuthenticated()" href="/profile" class="btn btn-warning me-2">Профиль </a>
           <a sec:authorize="isAuthenticated()" href="/logout" class="btn btn-dark me-2">Выйти </a>

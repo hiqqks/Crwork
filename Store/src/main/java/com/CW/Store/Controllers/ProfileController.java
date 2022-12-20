@@ -1,7 +1,6 @@
 package com.CW.Store.Controllers;
 
 import com.CW.Store.Entity.UserEntity;
-import com.CW.Store.repo.RoleRepository;
 import com.CW.Store.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -19,8 +18,7 @@ import java.util.Optional;
 public class ProfileController {
     @Autowired
     private UserRepository userRepository;
-    @Autowired
-    private RoleRepository roleRepository;
+
 
 
     @GetMapping("/profile")
@@ -34,5 +32,9 @@ public class ProfileController {
         model.addAttribute("users", res);
 
         return "profile";
+    }
+    @GetMapping("/profile/orders")
+    public String ShowOrders(Model model){
+        return "profile-orders";
     }
 }

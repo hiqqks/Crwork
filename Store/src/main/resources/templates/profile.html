@@ -9,22 +9,42 @@
 
 <div th:insert="Blocks/header :: header"></div>
 
-<div th:each="user: ${users}">
-  <section class="py-5">
-              <div class="text-center">
-                  <h5 th:text="${user.id}" class="fw-bolder"/>
-              </div>
-              <div class="text-center">
-                  <h5 th:text="${user.username}" class="fw-bolder"/>
-              </div>
-              <!--  <div
-                     th:if="${user.id} = ${user_role.id} == 1 ">
-                        <h5> You are admin</h5>
-                </div>-->
-  </section>
+<div class="container-fluid">
+    <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+            <div class="position-sticky pt-3 sidebar-sticky">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="/profile/" role="tab" aria-controls="v-pills-home" aria-selected="true">Профиль</a>
+                    <a class="nav-link " id="v-pills-profile-tab" data-toggle="pill" href="/profile/orders" role="tab" aria-controls="v-pills-profile" aria-selected="false">Мои заказы</a>
+                </div>
+            </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4"><div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                <h2 class="h2">Профиль пользователя</h2>
+            </div>
+            <h2>Пользователь</h2>
+            <div >
+                <div th:each="user: ${users}">
+                    <section class="py-5">
+                        <div class="text">
+                            <h5 th:text="${user.id}" class="fw-bolder"/>
+                        </div>
+                        <div class="text">
+                            <h5 th:text="${user.username}" class="fw-bolder"/>
+                        </div>
+                        <div>
+                            <h5 th:text="${user.roles}" class="fw-bolder"/>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
 </div>
 
-<footer class="py-5 bg-dark">
+<footer class="py-5 bg-dark fixed-bottom">
   <div class="container"><p class="m-0 text-center text-white">Copyright © Your Clothing Store 2022</p></div>
 </footer>
 </body>
