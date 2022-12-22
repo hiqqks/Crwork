@@ -1,4 +1,4 @@
-package com.CW.Store.config;
+package com.CW.Store.SecurityConfiguration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

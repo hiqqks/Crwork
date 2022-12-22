@@ -32,7 +32,33 @@
             </div>
             <h2>Одежда</h2>
             <div>
-
+                <section class="py-5">
+                    <div class="container px-4 px-lg-5 mt-5">
+                        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                            <div th:each="clothing : ${clothing}" class="col mb-5">
+                                <div class="card h-100">
+                                    <!-- Product image-->
+                                    <img th:src="${clothing.Img}" class="card-img-top" alt="...">
+                                    <!-- Product details-->
+                                    <div class="card-body p-4">
+                                        <div class="text-left">
+                                            <!-- Product name-->
+                                            <h5 th:text="${clothing.ClothingName}" class="fw-bolder"/>
+                                            <!-- Product price-->
+                                            <h4 th:text="${clothing.ClothingPrice}+ ' p.'"/>
+                                        </div>
+                                    </div>
+                                    <!-- Product actions-->
+                                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                        <div class="text">
+                                            <a class="btn btn-outline-dark mt-auto, me-1" th:href="'/admin-panel/products/'+${clothing.ClothingID} +'/edit'">Редакрировать</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </main>
     </div>

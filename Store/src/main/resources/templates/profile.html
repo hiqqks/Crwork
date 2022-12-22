@@ -13,10 +13,9 @@
     <div class="row">
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
             <div class="position-sticky pt-3 sidebar-sticky">
-                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="/profile/" role="tab" aria-controls="v-pills-home" aria-selected="true">Профиль</a>
-                    <a class="nav-link " id="v-pills-profile-tab" data-toggle="pill" href="/profile/orders" role="tab" aria-controls="v-pills-profile" aria-selected="false">Мои заказы</a>
-                </div>
+                <div  class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="v-pills-profile-tab" data-toggle="pill" href="/profile/" role="tab" aria-controls="v-pills-home" aria-selected="true">Профиль</a>
+                    <a class="nav-link " id="v-pills-orders-tab" data-toggle="pill" href="/profile/orders" role="tab" aria-controls="v-pills-profile" aria-selected="false">Мои заказы</a>
             </div>
         </nav>
 
@@ -24,22 +23,41 @@
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                 <h2 class="h2">Профиль пользователя</h2>
             </div>
-            <h2>Пользователь</h2>
-            <div >
-                <div th:each="user: ${users}">
-                    <section class="py-5">
-                        <div class="text">
-                            <h5 th:text="${user.id}" class="fw-bolder"/>
+                <div >
+                    <div class="row align-items-md-stretch">
+                        <div class="col-md-6">
+                            <div class="h-100 p-5 bg-light border rounded-3" th:each="user: ${users}">
+                                    <section class="py-2">
+                                        <div class="text">
+                                            <h3>Логин:</h3>
+                                            <h5 th:text="${user.username}" class="fw-bolder"/>
+                                        </div>
+                                        <div>
+                                            <h3>Фамилия:</h3>
+                                            <h5 th:text="${user.surname}" class="fw-bolder"/>
+                                        </div>
+                                        <div>
+                                            <h3>Имя:</h3>
+                                            <h5 th:text="${user.name}" class="fw-bolder"/>
+                                        </div>
+                                        <div>
+                                            <h3>Адрес:</h3>
+                                            <h5 th:text="${user.address}" class="fw-bolder"/>
+                                        </div>
+                                        <div>
+                                            <h3>Почтовый индекс:</h3>
+                                            <h5 th:text="${user.postCode}" class="fw-bolder"/>
+                                        </div>
+                                    </section>
+                            </div>
                         </div>
-                        <div class="text">
-                            <h5 th:text="${user.username}" class="fw-bolder"/>
-                        </div>
-                        <div>
-                            <h5 th:text="${user.roles}" class="fw-bolder"/>
-                        </div>
-                    </section>
+
+                    </div>
                 </div>
+            <div th:each="user: ${users}">
+               <br> <a class="btn btn-success" th:href="'/profile/edit/'+${user.id}">Редакрировать</a>
             </div>
+
         </main>
     </div>
 </div>

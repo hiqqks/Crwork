@@ -38,6 +38,7 @@
               <th>username</th>
               <th>password</th>
               <th>role</th>
+              <th>delete user</th>
             </tr>
             </thead>
             <tbody>
@@ -45,7 +46,16 @@
               <td>[[${users.id}]]</td>
               <td>[[${users.username}]]</td>
               <td>[[${users.password}]]</td>
-              <td>[[${users.roles}]]</td>
+              <td>
+                <div th:each="role: ${users.roles}" th:text="${role.name}" ></div>
+              </td>
+              <td>
+                <form  th:each="role: ${users.roles}" th:action="'/admin-panel/user/delete/'+ ${users.id}" method="post">
+                  <button class ="btn btn-danger" type="submit">delete</button>
+                </form>
+              </td>
+
+
             </tr>
             </tbody>
           </table>

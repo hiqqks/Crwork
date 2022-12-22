@@ -1,4 +1,4 @@
-package com.CW.Store.config;
+package com.CW.Store.SecurityConfiguration;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;

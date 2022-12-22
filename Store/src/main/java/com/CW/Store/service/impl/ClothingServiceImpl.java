@@ -4,8 +4,6 @@ import com.CW.Store.Entity.Clothing;
 import com.CW.Store.repo.ClothingRepository;
 import com.CW.Store.service.ClothingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -19,9 +17,10 @@ public class ClothingServiceImpl implements ClothingService {
     public ClothingServiceImpl(ClothingRepository clothingRepository) {
         this.clothingRepository = clothingRepository;
     }
-
     @Override
-    public Optional<Clothing> findById(Long id) {
+    public Optional<Clothing> findById(long id) {
         return clothingRepository.findById(id);
     }
+
+
 }

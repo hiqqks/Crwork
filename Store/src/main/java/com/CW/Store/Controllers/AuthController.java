@@ -1,7 +1,7 @@
 package com.CW.Store.Controllers;
 
 
-import com.CW.Store.config.JWTGenerator;
+import com.CW.Store.SecurityConfiguration.JWTGenerator;
 import com.CW.Store.dto.AuthResponseDTO;
 import com.CW.Store.dto.LoginDto;
 import com.CW.Store.repo.RoleRepository;

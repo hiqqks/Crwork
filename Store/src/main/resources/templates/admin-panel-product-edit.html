@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>HomePage </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+  <link href="../../../../dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="dashboard.css" rel="stylesheet">
+</head>
+<body>
+
+<div th:insert="Blocks/header :: header"></div>
+
+
+<div class="container-fluid">
+  <div class="row">
+
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+      <div class="position-sticky pt-3 sidebar-sticky">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="/admin-panel/users" role="tab" aria-controls="v-pills-home" aria-selected="true">Users</a>
+          <a class="nav-link " id="v-pills-profile-tab" data-toggle="pill" href="/admin-panel/orders" role="tab" aria-controls="v-pills-profile" aria-selected="false">Orders</a>
+          <a class="nav-link active" id="v-pills-messages-tab" data-toggle="pill" href="/admin-panel/products" role="tab" aria-controls="v-pills-messages" aria-selected="false">Products</a>
+        </div>
+      </div>
+    </nav>
+
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4"><div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+        <h2 class="h2">Панель Администратора</h2>
+      </div>
+      <h2>Редактирование</h2>
+      <div>
+        <section class="py-5">
+          <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-left">
+              <div th:each="clothing : ${clothing}" class="col mb-5">
+                <div class="card h-100">
+                  <!-- Product image-->
+                  <img th:src="${clothing.Img}" class="card-img-top" alt="...">
+                  <!-- Product details-->
+                  <div class="card-body p-4">
+                    <div class="text-left">
+                      <!-- Product name-->
+                      <h5 th:text="${clothing.ClothingName}" class="fw-bolder"/>
+                      <!-- Product price-->
+                      <h4 th:text="${clothing.ClothingPrice}+ ' p.'"/>
+                    </div>
+                  </div>
+                  <!-- Product actions-->
+                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="text">
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="container mt-5 mb-5">
+               <!-- <h1>Редактирование Одежды</h1>-->
+                <div th:each="clothing : ${clothing}">
+                  <form method="post">
+                    <input type="text" th:value="${clothing.ClothingName}" name="ClothingName" placeholder="Введите название одежды" class="form-control"><br>
+                    <input type="text" th:value="${clothing.ClothingPrice}" name="ClothingPrice" placeholder="Введите название одежды" class="form-control"><br>
+                    <button type="submit" class="btn btn-success">Обновить</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
+
+

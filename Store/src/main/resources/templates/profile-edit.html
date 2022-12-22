@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>HomePage </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<div th:insert="Blocks/header :: header"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+            <div class="position-sticky pt-3 sidebar-sticky">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="v-pills-profile-tab" data-toggle="pill" href="/profile/" role="tab" aria-controls="v-pills-home" aria-selected="true">Профиль</a>
+                    <a class="nav-link " id="v-pills-orders-tab" data-toggle="pill" href="/profile/orders" role="tab" aria-controls="v-pills-profile" aria-selected="false">Мои заказы</a>
+                </div>
+            </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4"><div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                <h2 class="h2">Профиль пользователя</h2>
+            </div>
+            <div >
+                <div class="row align-items-md-stretch">
+                    <div class="col-md-6">
+                        <div class="h-100 p-5 bg-light border rounded-3" th:each="user: ${user}">
+                            <section class="py-2">
+                                <div class="text">
+                                    <h2>Логин</h2>
+                                    <h5 th:text="${user.username}" class="fw-bolder"/>
+                                </div>
+                                <div>
+                                    <h2>Фамилия</h2>
+                                    <h5 th:text="${user.surname}" class="fw-bolder"/>
+                                </div>
+                                <div>
+                                    <h2>Имя</h2>
+                                    <h5 th:text="${user.name}" class="fw-bolder"/>
+                                </div>
+                                <div>
+                                    <h2>Адрес</h2>
+                                    <h5 th:text="${user.address}" class="fw-bolder"/>
+                                </div>
+                                <div>
+                                    <h2>Почтовый индекс</h2>
+                                    <h5 th:text="${user.postCode}" class="fw-bolder"/>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="h-100 p-5 bg-light border rounded-3">
+                            <h2>Редактирование данных</h2>
+
+
+                            <div th:each="user: ${user}">
+                                <form method="post">
+                                    <input type="text" th:value="${user.surname}" name="surname" placeholder="фамилия" class="form-control" ><br>
+                                    <input type="text" th:value="${user.name}" name="name" placeholder="имя" class="form-control" ><br>
+                                    <input type="text" th:value="${user.address}" name="address" placeholder="адрес" class="form-control" ><br>
+                                    <input type="number" th:value="${user.postCode}" name="postCode" placeholder="почтовый индекс" class="form-control" ><br>
+                                    <button type="submit" class="btn btn-success">Обновить</button>
+
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<footer class="py-5 bg-dark fixed-bottom">
+    <div class="container"><p class="m-0 text-center text-white">Copyright © Your Clothing Store 2022</p></div>
+</footer>
+</body>
+</html>

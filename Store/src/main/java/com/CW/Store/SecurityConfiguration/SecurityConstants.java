@@ -1,4 +1,4 @@
-package com.CW.Store.config;
+package com.CW.Store.SecurityConfiguration;
 
 public class SecurityConstants {
     public static final long JWT_EXPIRATION = 70000;

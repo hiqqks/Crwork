@@ -21,6 +21,9 @@
                 <div th:if="${param.fail}" >
                     <p class="text-danger text-center">Пользователь с таким логином уже существует!</p></div>
                 <div class="modal-body p-5 pt-0">
+                    <div th:if="${param.error}">
+                        <p class="text-danger text-center">Неправильный логин или пароль</p>
+                    </div>
                     <form role="form" th:action="@{/register/save}" th:object="${user}" method="POST">
 
                         <div class="form-floating mb-3">

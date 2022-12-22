@@ -1,4 +1,4 @@
-package com.CW.Store.config;
+package com.CW.Store.SecurityConfiguration;
 
 
 import io.jsonwebtoken.Claims;

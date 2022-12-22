@@ -1,4 +1,4 @@
-package com.CW.Store.config;
+package com.CW.Store.SecurityConfiguration;
 
 import com.CW.Store.Entity.Role;
 import com.CW.Store.Entity.UserEntity;
