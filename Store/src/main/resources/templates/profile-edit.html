@@ -29,10 +29,6 @@
                     <div class="col-md-6">
                         <div class="h-100 p-5 bg-light border rounded-3" th:each="user: ${user}">
                             <section class="py-2">
-                                <div class="text">
-                                    <h2>Логин</h2>
-                                    <h5 th:text="${user.username}" class="fw-bolder"/>
-                                </div>
                                 <div>
                                     <h2>Фамилия</h2>
                                     <h5 th:text="${user.surname}" class="fw-bolder"/>

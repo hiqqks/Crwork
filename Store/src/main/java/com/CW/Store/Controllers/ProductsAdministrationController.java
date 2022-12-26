@@ -22,8 +22,6 @@ ClothingRepository clothingRepository;
     public String ShowShowAdminPanel(Model model){
         Iterable<Clothing> clothing = clothingRepository.findAll();
         model.addAttribute("clothing", clothing);
-
-
         return "admin-panel-products";
     }
 

@@ -1,6 +1,7 @@
 package com.CW.Store.service;
 
 import com.CW.Store.Entity.Clothing;
+import com.CW.Store.Entity.Orders;
 
 import java.math.BigDecimal;
 import java.util.Map;
@@ -13,8 +14,12 @@ public interface ShoppingCartService {
 
     Map<Clothing, Integer> getProductsInCart();
 
-    void checkout();
+    void checkout(Orders orders);
+
+    void clearCart();
 
     BigDecimal getTotal();
+
+    int getAmountOfItems();
 
 }

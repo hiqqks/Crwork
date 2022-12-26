@@ -1,6 +1,9 @@
 package com.CW.Store.Controllers;
 
+import com.CW.Store.Entity.Orders;
 import com.CW.Store.Entity.UserEntity;
+import com.CW.Store.repo.ClothingRepository;
+import com.CW.Store.repo.OrdersRepository;
 import com.CW.Store.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -21,7 +24,10 @@ import java.util.Optional;
 public class ProfileController {
     @Autowired
     private UserRepository userRepository;
-
+    @Autowired
+    private ClothingRepository clothingRepository;
+    @Autowired
+    private OrdersRepository ordersRepository;
     @GetMapping("/profile")
     public String ShowProfile(@AuthenticationPrincipal UserDetails loggedUser, Model model){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -35,7 +41,14 @@ public class ProfileController {
         return "profile";
     }
     @GetMapping("/profile/orders")
-    public String ShowOrders(Model model){
+    public String ShowOrders( @AuthenticationPrincipal UserDetails loggedUser, Model model){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = loggedUser.getUsername();
+        Optional<UserEntity> users = userRepository.findByUsername(currentPrincipalName);
+        ArrayList<UserEntity> res = new ArrayList<>();
+        model.addAttribute("user", res);
+        Iterable<Orders> order = ordersRepository.findAll();
+        model.addAttribute("orders", order);
         return "profile-orders";
     }
 

@@ -131,10 +131,10 @@ input:focus::-webkit-input-placeholder
     transition: none;
 }
 .btn:hover{
-    color: white;
+    color: #000000;
 }
 a{
-    color: black;
+    color: #ffffff;
 }
 a:hover{
     color: black;

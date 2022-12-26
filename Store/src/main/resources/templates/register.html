@@ -31,7 +31,8 @@
                                    class="form-control rounded-3"
                                    id="username"
                                    placeholder="username"
-                                   th:field="*{username}">
+                                   th:field="*{username}"
+                                        required>
                             <label for="username">Логин</label>
                         </div>
                         <p th:if="${#fields.hasErrors('username')}" class="text-danger"></p>
@@ -40,7 +41,8 @@
                                    class="form-control rounded-3"
                                    id="password"
                                    placeholder="Password"
-                                   th:field="*{password}">
+                                   th:field="*{password}"
+                                   required>
 
                             <label for="password">Пароль</label>
                         </div>

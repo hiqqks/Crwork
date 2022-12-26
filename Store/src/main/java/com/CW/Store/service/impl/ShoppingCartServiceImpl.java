@@ -1,7 +1,11 @@
 package com.CW.Store.service.impl;
 
 import com.CW.Store.Entity.Clothing;
+import com.CW.Store.Entity.Orders;
 import com.CW.Store.repo.ClothingRepository;
+import com.CW.Store.repo.OrdersRepository;
+import com.CW.Store.repo.RoleRepository;
+import com.CW.Store.repo.UserRepository;
 import com.CW.Store.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -12,7 +16,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import java.math.BigDecimal;
 import java.util.Collections;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 
@@ -23,12 +27,18 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
 
     private final ClothingRepository clothingRepository;
+    private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
+    private final OrdersRepository ordersRepository;
 
-    private Map<Clothing, Integer> clothings = new HashMap<>();
+    private Map<Clothing, Integer> clothings = new LinkedHashMap<>();
 
     @Autowired
-    public ShoppingCartServiceImpl(ClothingRepository clothingRepository) {
+    public ShoppingCartServiceImpl(ClothingRepository clothingRepository, UserRepository userRepository, RoleRepository roleRepository, OrdersRepository ordersRepository) {
         this.clothingRepository = clothingRepository;
+        this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
+        this.ordersRepository = ordersRepository;
     }
 
     @Override
@@ -58,8 +68,13 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    public void checkout() {
+    public void checkout(Orders orders) {
 
+        clothings.clear();
+    }
+    @Override
+    public void clearCart() {
+        clothings.clear();
     }
 
     @Override
@@ -68,5 +83,11 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
               .map(entry -> entry.getKey().getClothingPrice().multiply(BigDecimal.valueOf(entry.getValue())))
               .reduce(BigDecimal::add)
               .orElse(BigDecimal.ZERO);
+    }
+
+    @Override
+    public int getAmountOfItems() {
+       int amount = clothings.size();
+       return amount;
     }
 }
